@@ -1,9 +1,10 @@
 #dice {
     margin: 5%;
+    float: left;
 }
 
 .die {
-    float: left;
+    
     width: 40px;
     height: 40px;
     margin: 1px;
@@ -11,15 +12,32 @@
     border-radius: 10px;
 }
 
-.one {
-    content: "1";
+#dice-score {
+    float: left;
+}
+
+#player-score {
+    float: left;
 }
 
 table {
-    clear: both;
+    display: inline-block;
+}
+
+thead {
+    text-align: center;
 }
 
 table, td {
+    margin: 5px;
     padding: 5px;
     border: 1px solid black;
+}
+
+#player-score tr:nth-child(7),
+#player-score tr:nth-child(8),
+#player-score tr:nth-child(9),
+#player-score tr:nth-child(18),
+#player-score tr:nth-child(19) {
+    border: 2px solid black; 
 }
