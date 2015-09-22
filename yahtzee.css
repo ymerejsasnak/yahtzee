@@ -12,6 +12,10 @@
     border-radius: 10px;
 }
 
+.held {
+    background: gray;
+}
+
 #dice-score {
     float: left;
 }
