@@ -3,7 +3,7 @@ $(function(){
 
     function Game() {
         this.dice = [null, null, null, null, null];
-        this.roll = 0;
+        this.rolls = 0;
         this.held = [false, false, false, false, false];
 
         this.diceScore = {ones: null,
@@ -147,19 +147,35 @@ $(function(){
     var g = new Game();
 
     $("#roll").on('click', function() {
-        g.roll();
-        g.showDice();
-        g.calculate();
-        g.showCalc();
+        g.rolls++;
+        if (g.rolls > 0 && g.rolls <= 3) {
+            g.roll();
+            g.showDice();
+            g.calculate();
+            g.showCalc();
+        }
     });
 
-    //hold listener (NEED TO DISABLE UNTIL FIRST ROLL...?)
+    //hold listener
     $(".die").on('click', function() {
-        var selected = $(this);
-        var which = selected.attr('id');
-        g.held[which] = !g.held[which];
-        selected.toggleClass('held');
-    })
+        if (g.rolls > 0 && g.rolls <= 3) {
+            var selected = $(this);
+            var which = selected.attr('id');
+            g.held[which] = !g.held[which];
+            selected.toggleClass('held');
+        }
+    });
+
+    //score selection listener
+    $('#dice-score td:nth-child(2)').on('click', function() {
+        //check that score exists
+        //copy score to player scorecard (check if empty first)
+        //reset rolls and holds
+    });
+
+
+
+    //will need endgame code to calculate totals once scorecard is full
 
 
 

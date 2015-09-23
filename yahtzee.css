@@ -45,3 +45,18 @@ table, td {
 #player-score tr:nth-child(19) {
     border: 2px solid black; 
 }
+
+#dice-score td:nth-child(2):hover {
+    background: gray;
+    cursor: pointer;
+}
+
+#dice-score td:nth-child(2):active {
+    background: white;
+    cursor: pointer;
+}
+
+#dice-score tr:nth-child(7) td:nth-child(2):hover {
+    background: white;
+    cursor: default;
+}
