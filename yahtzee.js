@@ -5,6 +5,7 @@ $(function(){
         this.dice = [null, null, null, null, null];
         this.rolls = 0;
         this.held = [false, false, false, false, false];
+        this.diceDivs = $('.die');
 
         this.diceScore = {ones: null,
                           twos: null,
@@ -157,21 +158,39 @@ $(function(){
     });
 
     //hold listener
-    $(".die").on('click', function() {
+    g.diceDivs.on('click', function() {
         if (g.rolls > 0 && g.rolls <= 3) {
             var selected = $(this);
-            var which = selected.attr('id');
-            g.held[which] = !g.held[which];
+            var thisID = selected.attr('id');
+            g.held[thisID] = !g.held[thisID];
             selected.toggleClass('held');
         }
     });
 
-    //score selection listener
+    //score selection listener (this is doing too much?)
     $('#dice-score td:nth-child(2)').on('click', function() {
-        //check that score exists
-        //copy score to player scorecard (check if empty first)
-        //reset rolls and holds
+        var category = $(this).attr('id'); 
+        var value = g.diceScore[category.substring(5)]; //substring to cut out leading 'dice-'
+        var target = $('#player-' + category.substring(5));
+        console.log(category.substring(5), value)
+        if (value !== null && target.text() === '--') { //make sure there is a score and that target is empty
+            target.text(value);
+            g.rolls = 0;
+            g.held = [false, false, false, false, false];
+            g.diceDivs.removeClass('held');
+            g.diceDivs.text('');
+            for (var score in g.diceScore) { //reset scores
+                g.diceScore[score] = null;
+                $('#dice-' + score).text('--');
+            }
+        }
+
+
+        
     });
+
+    //but don't listen on the blank space
+    $('#dice-score tr:nth-child(7) td:nth-child(2)').off('click');
 
 
 

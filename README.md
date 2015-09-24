@@ -3,8 +3,7 @@ more practice: yahtzee in js
 
 
 ## to do:
-calculate scores function
-show calculations
-limit to 3 rolls per turn/score
-select score to use
+end game calculations
+dice displayed graphically
+nicer display, cleaner code, etc.
 
