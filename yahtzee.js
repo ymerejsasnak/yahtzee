@@ -136,12 +136,15 @@ $(function(){
             $('#dice-chance').text(this.diceScore.chance);
 
         }
+
+        this.endGame = function() {
+            //calculate totals and do whatever else is necessary (disabling, resetting, etc)
+        }
         
 
-
-
-
     }
+
+
 
 
 
@@ -169,12 +172,16 @@ $(function(){
 
     //score selection listener (this is doing too much?)
     $('#dice-score td:nth-child(2)').on('click', function() {
-        var category = $(this).attr('id'); 
-        var value = g.diceScore[category.substring(5)]; //substring to cut out leading 'dice-'
-        var target = $('#player-' + category.substring(5));
-        console.log(category.substring(5), value)
+        var category = $(this).attr('id').substring(5); //substring to cut out leading 'dice-'
+        var value = g.diceScore[category]; 
+        var target = $('#player-' + category);
+        
         if (value !== null && target.text() === '--') { //make sure there is a score and that target is empty
+            //set score in object and div
+            g.playerScore[category] = value;
             target.text(value);
+
+            //reset everything for next turn
             g.rolls = 0;
             g.held = [false, false, false, false, false];
             g.diceDivs.removeClass('held');
@@ -185,7 +192,17 @@ $(function(){
             }
         }
 
-
+        //and check for endgame
+        var end = true;
+        for (var score in g.playerScore) {
+            console.log(g.playerScore[score])
+            if (g.playerScore[score] === null) {
+                end = false;
+            }
+        }
+        if (end) {
+            g.endGame();
+        }
         
     });
 
@@ -193,8 +210,6 @@ $(function(){
     $('#dice-score tr:nth-child(7) td:nth-child(2)').off('click');
 
 
-
-    //will need endgame code to calculate totals once scorecard is full
 
 
 
