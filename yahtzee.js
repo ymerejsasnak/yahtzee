@@ -3,6 +3,7 @@ $(function(){
 
     function Game() {
         this.dice = [null, null, null, null, null];
+        this.dotID = 10; //number to increment to always have unique ids for dice dots
         this.rolls = 0;
         this.held = [false, false, false, false, false];
         this.diceDivs = $('.die');
@@ -40,13 +41,54 @@ $(function(){
                     this.dice[die] = Math.floor(Math.random() * 6) + 1;
                 }
             }
+            $('.dot').remove();
         }
 
         this.showDice = function() {
             for (var die = 0; die < this.dice.length; die++) {
                 var dieDiv = $('#' + die);
-                dieDiv.text(this.dice[die]); //temp - change to graphical later
+                switch (this.dice[die]) {
+                    case 1:
+                        this.drawDot(die, 15, 15);
+                        break;
+                    case 2:
+                        this.drawDot(die, 7, 7);
+                        this.drawDot(die, 25, 12);
+                        break;
+                    case 3:
+                        this.drawDot(die, 25, 5);
+                        this.drawDot(die, 15, 7);
+                        this.drawDot(die, 5, 10);
+                        break;
+                    case 4:
+                        this.drawDot(die, 5, 5);
+                        this.drawDot(die, 20, -5);
+                        this.drawDot(die, 5, 10);
+                        this.drawDot(die, 20, -5);
+                        break;
+                    case 5:
+                        this.drawDot(die, 5, 5);
+                        this.drawDot(die, 20, -5);
+                        this.drawDot(die, 15, -5);
+                        this.drawDot(die, 5, 5);
+                        this.drawDot(die, 20, -10);
+                        break;
+                    case 6:
+                        this.drawDot(die, 5, 5);
+                        this.drawDot(die, 20, -5);
+                        this.drawDot(die, 5, 5);
+                        this.drawDot(die, 20, -5);
+                        this.drawDot(die, 5, 5);
+                        this.drawDot(die, 20, -5);
+                        break;
+                }   
             }
+        }
+
+        this.drawDot = function(die, x, y) {            
+            $('#' + die).append('<div class="dot" id="' + this.dotID + '"></div>');
+            $('#' + this.dotID).css({'top': y, 'left': x});
+            this.dotID++;
         }
 
 
@@ -155,8 +197,6 @@ $(function(){
             $('#upper-total').text(upper);
             $('#lower-total').text(lower);
             $('#grand-total').text(grand);
-
-
         }
         
 
