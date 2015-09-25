@@ -53,33 +53,33 @@ $(function(){
                         break;
                     case 2:
                         this.drawDot(die, 7, 7);
-                        this.drawDot(die, 25, 12);
+                        this.drawDot(die, 23, 23);
                         break;
                     case 3:
-                        this.drawDot(die, 25, 5);
-                        this.drawDot(die, 15, 7);
-                        this.drawDot(die, 5, 10);
+                        this.drawDot(die, 23, 7);
+                        this.drawDot(die, 15, 15);
+                        this.drawDot(die, 7, 23);
                         break;
                     case 4:
                         this.drawDot(die, 5, 5);
-                        this.drawDot(die, 20, -5);
-                        this.drawDot(die, 5, 10);
-                        this.drawDot(die, 20, -5);
+                        this.drawDot(die, 20, 5);
+                        this.drawDot(die, 5, 20);
+                        this.drawDot(die, 20, 20);
                         break;
                     case 5:
                         this.drawDot(die, 5, 5);
-                        this.drawDot(die, 20, -5);
-                        this.drawDot(die, 15, -5);
-                        this.drawDot(die, 5, 5);
-                        this.drawDot(die, 20, -10);
+                        this.drawDot(die, 20, 5);
+                        this.drawDot(die, 15, 15);
+                        this.drawDot(die, 5, 20);
+                        this.drawDot(die, 20, 20);
                         break;
                     case 6:
                         this.drawDot(die, 5, 5);
-                        this.drawDot(die, 20, -5);
-                        this.drawDot(die, 5, 5);
-                        this.drawDot(die, 20, -5);
-                        this.drawDot(die, 5, 5);
-                        this.drawDot(die, 20, -5);
+                        this.drawDot(die, 20, 5);
+                        this.drawDot(die, 5, 15);
+                        this.drawDot(die, 20, 15);
+                        this.drawDot(die, 5, 25);
+                        this.drawDot(die, 20, 25);
                         break;
                 }   
             }

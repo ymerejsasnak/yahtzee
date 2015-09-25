@@ -4,7 +4,7 @@
 }
 
 .die {
-    
+    position: relative;
     width: 40px;
     height: 40px;
     margin: 1px;
@@ -13,7 +13,7 @@
 }
 
 .dot {
-    position: relative;
+    position: absolute;
     width: 10px;
     height: 10px;
     border-radius: 50%;

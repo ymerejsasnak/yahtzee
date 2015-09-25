@@ -6,7 +6,7 @@ more practice: yahtzee in js
 endgame reset option or...
 ...add a reset button that resets game at any time?
 
-CLEAN UP DICE DISPLAY - CHANGE TO ABSOLUTE POSITIONING (BUT WILL HAVE TO POSITION PARENT (.die) DIVS FIRST?)
+fix up dice a bit
 
 nicer display, cleaner code, etc.
 
