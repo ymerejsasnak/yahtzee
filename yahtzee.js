@@ -138,7 +138,25 @@ $(function(){
         }
 
         this.endGame = function() {
-            //calculate totals and do whatever else is necessary (disabling, resetting, etc)
+            //calculate totals and bonus
+            var subtotal, bonus = 0, upper, lower, grand;
+            subtotal = this.playerScore.ones + this.playerScore.twos + this.playerScore.threes +
+                       this.playerScore.fours + this.playerScore.fives + this.playerScore.sixes;
+            if (subtotal >= 63) { bonus = 35; }
+            upper = subtotal + bonus;
+            lower = this.playerScore.threekind + this.playerScore.fourkind + this.playerScore.fullhouse +
+                    this.playerScore.smstraight + this.playerScore.lgstraight +
+                    this.playerScore.yahtzee + this.playerScore.chance;
+            grand = lower + upper;
+
+            //show numbers
+            $('#upper-subtotal').text(subtotal);
+            $('#upper-bonus').text(bonus);
+            $('#upper-total').text(upper);
+            $('#lower-total').text(lower);
+            $('#grand-total').text(grand);
+
+
         }
         
 
@@ -195,7 +213,6 @@ $(function(){
         //and check for endgame
         var end = true;
         for (var score in g.playerScore) {
-            console.log(g.playerScore[score])
             if (g.playerScore[score] === null) {
                 end = false;
             }
