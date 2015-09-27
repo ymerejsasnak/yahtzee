@@ -20,7 +20,7 @@ $(function(){
                           smstraight: null,
                           lgstraight: null,
                           yahtzee: null,
-                          chance: null}
+                          chance: null};
         this.playerScore = {ones: null,
                           twos: null,
                           threes: null,
@@ -33,7 +33,7 @@ $(function(){
                           smstraight: null,
                           lgstraight: null,
                           yahtzee: null,
-                          chance: null}
+                          chance: null};
 
         this.roll = function() {
             for (var die = 0; die < this.dice.length; die++) {
@@ -135,14 +135,17 @@ $(function(){
             }
 
             //small straight 
-            var sortedDice = this.dice.concat().sort().toString();
-            if (sortedDice.indexOf('1,2,3,4') > -1 || sortedDice.indexOf('2,3,4,5') > -1 || sortedDice.indexOf('3,4,5,6') > -1) {
+            if ( (this.dice.indexOf(3) > -1 && this.dice.indexOf(4) > -1) &&
+                  ((this.dice.indexOf(1) > -1 && this.dice.indexOf(2) > -1) ||
+                   (this.dice.indexOf(2) > -1 && this.dice.indexOf(5) > -1) || 
+                   (this.dice.indexOf(5) > -1 && this.dice.indexOf(6) > -1)) ) {
                 this.diceScore.smstraight = 30;
             } else {
                 this.diceScore.smstraight = 0;
             }
 
             //large straight
+            var sortedDice = this.dice.concat().sort().toString();
             if (sortedDice === '1,2,3,4,5' || sortedDice === '2,3,4,5,6') {
                 this.diceScore.lgstraight = 40;
             } else {

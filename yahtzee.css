@@ -1,3 +1,7 @@
+#reset {
+    clear: both;
+}
+
 #dice {
     margin: 5%;
     float: left;
