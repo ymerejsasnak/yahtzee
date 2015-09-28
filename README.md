@@ -12,7 +12,7 @@ nicer display, cleaner code, etc.
 
 implement yahtzee bonus? (need to look up rules for that)
 
-multiple players?
+multiple players?  -- make an AI player?
 
 save high scores?
 
